@@ -1,0 +1,20 @@
+{
+    "name": "moxio/php-codesniffer-sniffs",
+    "description": "Custom sniffs for PHP_CodeSniffer",
+    "license": "MIT",
+    "keywords" : [ "phpcs", "PHP_CodeSniffer", "sniffs", "standards" ],
+    "authors": [
+        {
+            "name": "Moxio",
+            "homepage": "https://www.moxio.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Moxio_": "src/"
+        }
+    },
+    "require": {
+        "squizlabs/php_codesniffer": "~2.5"
+    }
+}

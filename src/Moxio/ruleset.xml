@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Moxio">
+    <description>Sniffs for detecting potential bugs and unexpected behavior in PHP code.</description>
+</ruleset>
