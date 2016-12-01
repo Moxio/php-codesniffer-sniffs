@@ -10,7 +10,12 @@ _More sniffs will be added soon._
 
 **Moxio.PHP.DisallowBareContinueInSwitch**: Disallows the `continue` statement without a numeric
 argument when used directly within a `switch`-`case`. This prevents silent bugs caused by PHP 
-considering `switch` [to be a looping structure](http://php.net/manual/en/control-structures.switch.php).  
+considering `switch` [to be a looping structure](http://php.net/manual/en/control-structures.switch.php).
+
+**Moxio.PHP.DisallowImplicitLooseComparison**: Disallows implicit non-strict comparisons by functions
+like `in_array` and `array_search`. Requires that the `$strict`-parameter to these functions is
+explicitly set. This prevents hidden bugs due to [counter-intuitive behavior of non-strict 
+comparison](https://twitter.com/fabpot/status/460707769990266880).
 
 License
 -------
