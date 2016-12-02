@@ -4,6 +4,8 @@ This is a collection of our custom PHP_Codesniffer sniffs for detecting potentia
 and unexpected behavior in PHP code. It may be used as a ruleset on its own, but it is mainly
 intended as a set of separate sniffs that can be integrated into other standards.
 
+We described the motivation behind some of these sniffs [on our blog](https://www.moxio.com/blog/10/detecting-hidden-bugs-in-php-code-using-php-codesniffer).
+
 Description of sniffs
 ---------------------
 _More sniffs will be added soon._
