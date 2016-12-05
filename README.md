@@ -6,6 +6,17 @@ intended as a set of separate sniffs that can be integrated into other standards
 
 We described the motivation behind some of these sniffs [on our blog](https://www.moxio.com/blog/10/detecting-hidden-bugs-in-php-code-using-php-codesniffer).
 
+Installation and usage
+----------------------
+Install as a development dependency using composer:
+```
+$ composer require --dev moxio/php-codesniffer-sniffs
+```
+Check your files against this set of sniffs:
+```
+$ ./vendor/bin/phpcs --standard=vendor/moxio/php-codesniffer-sniffs/Moxio path/to/your/files
+```
+
 Description of sniffs
 ---------------------
 _More sniffs will be added soon._
