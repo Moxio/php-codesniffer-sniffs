@@ -1,6 +1,11 @@
 <?php
+namespace Moxio\Sniffs\PHP;
 
-class Moxio_Sniffs_PHP_DisallowBareContinueInSwitchSniff implements \PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_Codesniffer\Util\Tokens;
+
+class DisallowBareContinueInSwitchSniff implements Sniff
 {
     public $supportedTokenizers = array(
         'PHP',
@@ -11,7 +16,7 @@ class Moxio_Sniffs_PHP_DisallowBareContinueInSwitchSniff implements \PHP_CodeSni
         return array(T_SWITCH);
     }
 
-    public function process(\PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -28,7 +33,7 @@ class Moxio_Sniffs_PHP_DisallowBareContinueInSwitchSniff implements \PHP_CodeSni
             if ($tokens[$nextRelevantToken]['code'] === T_CONTINUE) {
                 $continuePtr = $nextRelevantToken;
 
-                $nextNonEmptyToken = $phpcsFile->findNext(\PHP_CodeSniffer_Tokens::$emptyTokens, ($continuePtr + 1), $switchClosePtr, true);
+                $nextNonEmptyToken = $phpcsFile->findNext(Tokens::$emptyTokens, ($continuePtr + 1), $switchClosePtr, true);
                 if ($tokens[$nextNonEmptyToken]['code'] === T_SEMICOLON) {
                     $error = 'A continue-statement directly inside a switch-case must have a numeric \'level\'-argument';
                     $hint = 'HINT: you probably want `continue 2`, since the switch statement is considered a looping structure';

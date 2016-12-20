@@ -1,5 +1,10 @@
 <?php
-class Moxio_Sniffs_PHP_DisallowImplicitLooseComparisonSniff extends Moxio_Sniffs_Abstract_AbstractFunctionCallSniff
+namespace Moxio\Sniffs\PHP;
+
+use Moxio\Sniffs\AbstractFunctionCallSniff;
+use PHP_CodeSniffer\Files\File;
+
+class DisallowImplicitLooseComparisonSniff extends AbstractFunctionCallSniff
 {
     private $functionsWithStrictParameter = array(
         'in_array' => 3,
@@ -11,7 +16,7 @@ class Moxio_Sniffs_PHP_DisallowImplicitLooseComparisonSniff extends Moxio_Sniffs
         return array_keys($this->functionsWithStrictParameter);
     }
 
-    protected function processFunctionCall(PHP_CodeSniffer_File $phpcsFile, $functionName, $functionNamePtr, $argumentPtrs)
+    protected function processFunctionCall(File $phpcsFile, $functionName, $functionNamePtr, $argumentPtrs)
     {
         $requiredNumArguments = $this->functionsWithStrictParameter[$functionName];
         if (count($argumentPtrs) < $requiredNumArguments) {

@@ -1,5 +1,11 @@
 <?php
-abstract class Moxio_Sniffs_Abstract_AbstractFunctionCallSniff implements PHP_CodeSniffer_Sniff
+namespace Moxio\Sniffs;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_Codesniffer\Util\Tokens;
+
+abstract class AbstractFunctionCallSniff implements Sniff
 {
     public $supportedTokenizers = array(
         'PHP',
@@ -10,7 +16,7 @@ abstract class Moxio_Sniffs_Abstract_AbstractFunctionCallSniff implements PHP_Co
         return array(T_STRING);
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
         $functionNamePtr    = $stackPtr;
@@ -24,13 +30,13 @@ abstract class Moxio_Sniffs_Abstract_AbstractFunctionCallSniff implements PHP_Co
 
         // If the next non-whitespace token after the function or method call
         // is not an opening parenthesis then it cant really be a *call*.
-        $openBracket = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, ($functionNamePtr + 1), null, true);
+        $openBracket = $phpcsFile->findNext(Tokens::$emptyTokens, ($functionNamePtr + 1), null, true);
         if ($tokens[$openBracket]['code'] !== T_OPEN_PARENTHESIS) {
             return;
         }
 
         // Skip tokens that are *method* calls rather than *function* calls
-        $callOperator = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($functionNamePtr - 1), null, true);
+        $callOperator = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($functionNamePtr - 1), null, true);
         if ($tokens[$callOperator]['code'] === T_OBJECT_OPERATOR || $tokens[$callOperator]['code'] === T_DOUBLE_COLON) {
             return;
         }
@@ -40,7 +46,7 @@ abstract class Moxio_Sniffs_Abstract_AbstractFunctionCallSniff implements PHP_Co
         // function myFunction...
         // "myFunction" is T_STRING but we should skip because it is not a
         // function or method *call*.
-        $ignoreTokens    = PHP_CodeSniffer_Tokens::$emptyTokens;
+        $ignoreTokens    = Tokens::$emptyTokens;
         $ignoreTokens[]  = T_BITWISE_AND;
         $functionKeyword = $phpcsFile->findPrevious($ignoreTokens, ($stackPtr - 1), null, true);
         if ($tokens[$functionKeyword]['code'] === T_FUNCTION || $tokens[$functionKeyword]['code'] === T_CLASS) {
@@ -61,9 +67,9 @@ abstract class Moxio_Sniffs_Abstract_AbstractFunctionCallSniff implements PHP_Co
                 continue;
             }
 
-            $argumentStart = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $lastArgumentSeparator + 1, $nextSeparator, true);
+            $argumentStart = $phpcsFile->findNext(Tokens::$emptyTokens, $lastArgumentSeparator + 1, $nextSeparator, true);
             if ($argumentStart !== false) {
-                $argumentEnd = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, $nextSeparator - 1, $lastArgumentSeparator, true);
+                $argumentEnd = $phpcsFile->findPrevious(Tokens::$emptyTokens, $nextSeparator - 1, $lastArgumentSeparator, true);
                 $argumentPositions[] = array(
                     "start" => $argumentStart,
                     "end" => $argumentEnd
@@ -74,9 +80,9 @@ abstract class Moxio_Sniffs_Abstract_AbstractFunctionCallSniff implements PHP_Co
         }
 
         // Add the final argument, if any
-        $argumentStart = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $lastArgumentSeparator + 1, $closeBracket, true);
+        $argumentStart = $phpcsFile->findNext(Tokens::$emptyTokens, $lastArgumentSeparator + 1, $closeBracket, true);
         if ($argumentStart !== false) {
-            $argumentEnd = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, $closeBracket - 1, $lastArgumentSeparator, true);
+            $argumentEnd = $phpcsFile->findPrevious(Tokens::$emptyTokens, $closeBracket - 1, $lastArgumentSeparator, true);
             $argumentPositions[] = array(
                 "start" => $argumentStart,
                 "end" => $argumentEnd
@@ -94,5 +100,5 @@ abstract class Moxio_Sniffs_Abstract_AbstractFunctionCallSniff implements PHP_Co
     /**
      * Called whenever a call to one of the functions from `registerFunctions` is encountered.
      */
-    abstract protected function processFunctionCall(PHP_CodeSniffer_File $phpcsFile, $functionName, $functionNamePtr, $argumentPtrs);
+    abstract protected function processFunctionCall(File $phpcsFile, $functionName, $functionNamePtr, $argumentPtrs);
 }
