@@ -1,6 +1,6 @@
 Moxio PHP_CodeSniffer sniffs
 =============================
-This is a collection of our custom PHP_Codesniffer sniffs for detecting potential bugs 
+This is a collection of our custom PHP_Codesniffer (3.x) sniffs for detecting potential bugs 
 and unexpected behavior in PHP code. It may be used as a ruleset on its own, but it is mainly
 intended as a set of separate sniffs that can be integrated into other standards.
 

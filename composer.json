@@ -15,6 +15,6 @@
         }
     },
     "require": {
-        "squizlabs/php_codesniffer": "~3.0.0-RC2"
+        "squizlabs/php_codesniffer": "^3.0.0"
     }
 }
