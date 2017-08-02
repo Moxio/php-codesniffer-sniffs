@@ -30,6 +30,11 @@ like `in_array` and `array_search`. Requires that the `$strict`-parameter to the
 explicitly set. This prevents hidden bugs due to [counter-intuitive behavior of non-strict 
 comparison](https://twitter.com/fabpot/status/460707769990266880).
 
+**Moxio.PHP.DisallowUniqidWithoutMoreEntropy**: Disallows calls to `uniqid()` without `$more_entropy = 
+true`.  When `$more_entropy` is `false` (which is the default), `uniqid()` calls `usleep()` to avoid 
+collisions, which [can be a substantial performance hit](http://blog.kevingomez.fr/til/2015/07/26/why-is-uniqid-slow/).
+Always calling `uniqid()` with `$more_entropy = true` avoids these problems.
+
 License
 -------
 These sniffs are released under the MIT license.
