@@ -58,7 +58,13 @@ abstract class AbstractFunctionCallSniff implements Sniff
         $argumentPositions = array();
         $lastArgumentSeparator = $openBracket;
         $nextSeparator = $openBracket;
-        while (($nextSeparator = $phpcsFile->findNext(array(T_COMMA), ($nextSeparator + 1), $closeBracket)) !== false) {
+        while (($nextSeparator = $phpcsFile->findNext(array(T_COMMA, T_OPEN_SHORT_ARRAY), ($nextSeparator + 1), $closeBracket)) !== false) {
+            // Skip over pairs of square brackets
+            if ($tokens[$nextSeparator]['code'] === T_OPEN_SHORT_ARRAY) {
+                $nextSeparator = $tokens[$nextSeparator]['bracket_closer'];
+                continue;
+            }
+
             // Make sure the comma or variable belongs directly to this function call,
             // and is not inside a nested function call or array.
             $brackets    = $tokens[$nextSeparator]['nested_parenthesis'];
