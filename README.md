@@ -35,6 +35,14 @@ true`.  When `$more_entropy` is `false` (which is the default), `uniqid()` calls
 collisions, which [can be a substantial performance hit](http://blog.kevingomez.fr/til/2015/07/26/why-is-uniqid-slow/).
 Always calling `uniqid()` with `$more_entropy = true` avoids these problems.
 
+Running tests
+-------------
+After installing dependencies (including development dependencies) using Composer, run
+```
+$ ./vendor/bin/phpunit
+```
+from the project root dir.
+
 License
 -------
 These sniffs are released under the MIT license.
