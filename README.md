@@ -35,6 +35,11 @@ true`.  When `$more_entropy` is `false` (which is the default), `uniqid()` calls
 collisions, which [can be a substantial performance hit](http://blog.kevingomez.fr/til/2015/07/26/why-is-uniqid-slow/).
 Always calling `uniqid()` with `$more_entropy = true` avoids these problems.
 
+**Moxio.PHP.DisallowArrayCombinersWithSingleArray**: Disallows calls to functions that combine two or more
+arrays with only a single array given as an argument. This applies to functions like `array_merge(_recursive)`, 
+`array_replace(_recursive)` and all variants of `array_diff` and `array_intersect`. Such a call does not make sense,
+and is most likely a result of a misplaced comma or parenthesis. To re-index a single array, just use `array_values`.
+
 Running tests
 -------------
 After installing dependencies (including development dependencies) using Composer, run
