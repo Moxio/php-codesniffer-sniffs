@@ -48,6 +48,14 @@ $ ./vendor/bin/phpunit
 ```
 from the project root dir.
 
+Versioning
+----------
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+Please note that, from the perspective of this library as a pick-and-match collection of sniffs (and not
+a complete coding standard), the addition of new sniffs will not be considered a breaking change and thus
+does not cause an increase in the major version number.  
+
 License
 -------
 These sniffs are released under the MIT license.
