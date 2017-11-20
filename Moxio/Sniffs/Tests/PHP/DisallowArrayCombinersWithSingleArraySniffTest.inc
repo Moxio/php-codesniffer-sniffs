@@ -41,3 +41,6 @@ array_uintersect_assoc($a, $b, $fn);
 array_uintersect_assoc($a, $fn);
 array_uintersect_uassoc($a, $b, $fn, $fn2);
 array_uintersect_uassoc($a, $fn, $fn2);
+
+array_merge(...$arrays);
+array_merge(foo(...$bar));

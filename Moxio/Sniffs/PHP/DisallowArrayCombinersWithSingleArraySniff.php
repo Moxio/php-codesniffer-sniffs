@@ -6,6 +6,8 @@ use PHP_CodeSniffer\Files\File;
 
 class DisallowArrayCombinersWithSingleArraySniff extends AbstractFunctionCallSniff
 {
+    protected $skipForUnpackedArguments = true;
+
     private $arrayCombinationFunctions = array(
         'array_merge' => 2,
         'array_merge_recursive' => 2,

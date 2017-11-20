@@ -11,6 +11,8 @@ abstract class AbstractFunctionCallSniff implements Sniff
         'PHP',
     );
 
+    protected $skipForUnpackedArguments = false;
+
     public function register()
     {
         return array(T_STRING);
@@ -56,6 +58,7 @@ abstract class AbstractFunctionCallSniff implements Sniff
         $closeBracket = $tokens[$openBracket]['parenthesis_closer'];
 
         $argumentPositions = array();
+        $hasUnpackedArgument = false;
         $lastArgumentSeparator = $openBracket;
         $nextSeparator = $openBracket;
         while (($nextSeparator = $phpcsFile->findNext(array(T_COMMA, T_OPEN_SHORT_ARRAY), ($nextSeparator + 1), $closeBracket)) !== false) {
@@ -89,10 +92,24 @@ abstract class AbstractFunctionCallSniff implements Sniff
         $argumentStart = $phpcsFile->findNext(Tokens::$emptyTokens, $lastArgumentSeparator + 1, $closeBracket, true);
         if ($argumentStart !== false) {
             $argumentEnd = $phpcsFile->findPrevious(Tokens::$emptyTokens, $closeBracket - 1, $lastArgumentSeparator, true);
+
+            $ellipsis = $phpcsFile->findNext(T_ELLIPSIS, $argumentStart, $argumentEnd);
+            if ($ellipsis !== false) {
+                $brackets = $tokens[$ellipsis]['nested_parenthesis'];
+                $lastBracket = array_pop($brackets);
+                if ($lastBracket === $closeBracket) {
+                    $hasUnpackedArgument = true;
+                }
+            }
+
             $argumentPositions[] = array(
                 "start" => $argumentStart,
                 "end" => $argumentEnd
             );
+        }
+
+        if ($this->skipForUnpackedArguments && $hasUnpackedArgument) {
+            return;
         }
 
         $this->processFunctionCall($phpcsFile, $functionName, $functionNamePtr, $argumentPositions);

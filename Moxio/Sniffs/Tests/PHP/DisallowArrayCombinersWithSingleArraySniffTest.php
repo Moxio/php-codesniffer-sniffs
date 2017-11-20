@@ -36,6 +36,7 @@ class DisallowArrayCombinersWithSingleArraySniffTest extends AbstractSniffTest
             39,
             41,
             43,
+            46,
         ]);
     }
 }
