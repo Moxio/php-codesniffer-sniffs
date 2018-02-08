@@ -40,6 +40,11 @@ arrays with only a single array given as an argument. This applies to functions 
 `array_replace(_recursive)` and all variants of `array_diff` and `array_intersect`. Such a call does not make sense,
 and is most likely a result of a misplaced comma or parenthesis. To re-index a single array, just use `array_values`.
 
+**Moxio.PHP.DisallowImplicitMicrotimeAsString**: Disallows calls to `microtime()` without the `$get_as_float` 
+argument being explicitly set. By default, `microtime` has a string as its return value ("msec sec"), which
+is unexpected and cannot be naively cast to float, making it error-prone. It is still possible to set this 
+argument to `false`, but in that case you have probably thought about this.
+
 Running tests
 -------------
 After installing dependencies (including development dependencies) using Composer, run
