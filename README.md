@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Moxio/php-codesniffer-sniffs.svg?branch=master)](https://travis-ci.org/Moxio/php-codesniffer-sniffs)
+[![Latest Stable Version](https://poser.pugx.org/moxio/php-codesniffer-sniffs/v/stable)](https://packagist.org/packages/moxio/php-codesniffer-sniffs)
+
 Moxio PHP_CodeSniffer sniffs
 =============================
 This is a collection of our custom PHP_Codesniffer (3.x) sniffs for detecting potential bugs 
