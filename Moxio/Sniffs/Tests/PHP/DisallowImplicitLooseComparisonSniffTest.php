@@ -18,6 +18,8 @@ class DisallowImplicitLooseComparisonSniffTest extends AbstractSniffTest
             2,
             3,
             4,
+            14,
+            17,
         ]);
     }
 }
