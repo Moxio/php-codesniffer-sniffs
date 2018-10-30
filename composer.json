@@ -1,5 +1,6 @@
 {
     "name": "moxio/php-codesniffer-sniffs",
+    "type": "phpcodesniffer-standard",
     "description": "Custom sniffs for PHP_CodeSniffer",
     "license": "MIT",
     "keywords" : [ "phpcs", "PHP_CodeSniffer", "sniffs", "standards" ],
