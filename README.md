@@ -33,7 +33,7 @@ like `in_array` and `array_search`. Requires that the `$strict`-parameter to the
 explicitly set. This prevents hidden bugs due to [counter-intuitive behavior of non-strict 
 comparison](https://twitter.com/fabpot/status/460707769990266880).
 
-**Moxio.PHP.DisallowImplicitLooseBase64DecodeSniff**: Disallows implicit non-strict usage of the `base64_decode` function.
+**Moxio.PHP.DisallowImplicitLooseBase64Decode**: Disallows implicit non-strict usage of the `base64_decode` function.
 Requires that the `$strict`-parameter to this function is explicitly set.
 
 **Moxio.PHP.DisallowUniqidWithoutMoreEntropy**: Disallows calls to `uniqid()` without `$more_entropy = 
