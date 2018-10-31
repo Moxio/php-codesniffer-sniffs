@@ -1,5 +1,5 @@
 <?php
-namespace Moxio\Sniffs\Tests;
+namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests;
 
 use PHP_CodeSniffer\Config;
 use PHP_CodeSniffer\Files\LocalFile;

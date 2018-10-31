@@ -1,7 +1,7 @@
 <?php
-namespace Moxio\Sniffs\PHP;
+namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP;
 
-use Moxio\Sniffs\AbstractFunctionCallSniff;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\AbstractFunctionCallSniff;
 use PHP_CodeSniffer\Files\File;
 
 class DisallowImplicitLooseComparisonSniff extends AbstractFunctionCallSniff

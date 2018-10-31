@@ -1,8 +1,8 @@
 <?php
 namespace Moxio\Sniffs\Tests\PHP;
 
-use Moxio\Sniffs\PHP\DisallowUniqidWithoutMoreEntropySniff;
-use Moxio\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowUniqidWithoutMoreEntropySniff;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
 
 class DisallowUniqidWithoutMoreEntropySniffTest extends AbstractSniffTest
 {

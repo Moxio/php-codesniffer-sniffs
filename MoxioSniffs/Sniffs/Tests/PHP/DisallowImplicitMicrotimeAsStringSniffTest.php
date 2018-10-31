@@ -1,9 +1,8 @@
 <?php
-namespace Moxio\Sniffs\Tests\PHP;
+namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
-use Moxio\Sniffs\PHP\DisallowImplicitLooseComparisonSniff;
-use Moxio\Sniffs\PHP\DisallowImplicitMicrotimeAsStringSniff;
-use Moxio\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowImplicitMicrotimeAsStringSniff;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
 
 class DisallowImplicitMicrotimeAsStringSniffTest extends AbstractSniffTest
 {

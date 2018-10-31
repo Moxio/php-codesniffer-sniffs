@@ -11,15 +11,15 @@
 
     <testsuites>
         <testsuite name="Moxio PHP_CodeSniffer Sniffs Test Suite">
-            <directory>./Moxio/Sniffs/Tests</directory>
+            <directory>./MoxioSniffs/Sniffs/Tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./Moxio</directory>
+            <directory>./MoxioSniffs</directory>
             <exclude>
-                <directory>./Moxio/Sniffs/Tests</directory>
+                <directory>./MoxioSniffs/Sniffs/Tests</directory>
             </exclude>
         </whitelist>
     </filter>

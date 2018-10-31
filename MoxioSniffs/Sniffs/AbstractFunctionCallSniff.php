@@ -1,5 +1,5 @@
 <?php
-namespace Moxio\Sniffs;
+namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs;
 
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;

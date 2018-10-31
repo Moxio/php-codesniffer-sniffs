@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="Moxio">
+<ruleset name="MoxioSniffs" namespace="Moxio\CodeSniffer\MoxioSniffs">
     <description>Sniffs for detecting potential bugs and unexpected behavior in PHP code.</description>
 </ruleset>
