@@ -16,6 +16,3 @@ $x = array_search("foo", array('a', 'b'));
 $x = array_keys(array('a', 'b'));
 $x = array_keys(array('a', 'b'), "foo");
 $x = array_keys(array('a', 'b'), "foo", true);
-
-$x = base64_decode('data');
-$x = base64_decode('data', true);

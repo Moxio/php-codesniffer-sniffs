@@ -10,7 +10,6 @@ class DisallowImplicitLooseComparisonSniff extends AbstractFunctionCallSniff
         'in_array' => 3,
         'array_search' => 3,
         'array_keys' => 3,
-        'base64_decode' => 2,
     );
 
     private $minimumArgumentsForApplicability = array(
