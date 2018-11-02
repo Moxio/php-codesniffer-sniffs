@@ -51,6 +51,13 @@ argument being explicitly set. By default, `microtime` has a string as its retur
 is unexpected and cannot be naively cast to float, making it error-prone. It is still possible to set this 
 argument to `false`, but in that case you have probably thought about this.
 
+**Moxio.PHP.DisallowImplicitIteratorToArrayWithUseKeys**: Disallows calls to `iterator_to_array()` without the
+`$use_keys` argument being explicitly set. By default, `iterator_to_array` uses the keys provided
+by the iterator. This behavior is often desired for associative arrays, but can cause [unexpected 
+results](https://twitter.com/hollodotme/status/1057909890566537217) for 'list-like' arrays. Explicitly
+requiring the parameter to be set ensures that the developer has to think about which behavior is desired
+for the situation at hand.
+
 Running tests
 -------------
 After installing dependencies (including development dependencies) using Composer, run
