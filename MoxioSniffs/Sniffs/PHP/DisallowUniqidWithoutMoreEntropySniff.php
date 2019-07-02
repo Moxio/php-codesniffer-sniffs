@@ -16,13 +16,13 @@ class DisallowUniqidWithoutMoreEntropySniff extends AbstractFunctionCallSniff
         $tokens = $phpcsFile->getTokens();
 
         if (count($argumentPtrs) < 2) {
-            $error = sprintf('Calls to uniqid() without the $more_entropy-flag are not allowed, because they can be slow', $functionName);
+            $error = sprintf('Calls to %s() without the $more_entropy-flag are not allowed, because they can be slow', $functionName);
             $phpcsFile->addError($error, $functionNamePtr, 'ArgumentNotGiven');
         } else {
             $moreEntropyArgumentStart = $argumentPtrs[1]['start'];
             $moreEntropyArgumentEnd = $argumentPtrs[1]['end'];
             if ($moreEntropyArgumentStart !== $moreEntropyArgumentEnd || $tokens[$moreEntropyArgumentStart]['code'] !== T_TRUE) {
-                $error = sprintf('Calls to uniqid() must have the $more_entropy-flag set to true', $functionName);
+                $error = sprintf('Calls to %s() must have the $more_entropy-flag set to true', $functionName);
                 $phpcsFile->addError($error, $functionNamePtr, 'ArgumentNotTrue');
             }
         }
