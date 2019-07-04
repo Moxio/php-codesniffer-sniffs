@@ -58,6 +58,10 @@ results](https://twitter.com/hollodotme/status/1057909890566537217) for 'list-li
 requiring the parameter to be set ensures that the developer has to think about which behavior is desired
 for the situation at hand.
 
+**MoxioSniffs.PHP.DisallowDateTime**: Disallows usage of `\DateTime` and promotes the use of `\DateTimeImmutable`
+instead. The former being mutable can lead to some subtle but nasty bugs. See [this post](https://blog.nikolaposa.in.rs/2019/07/01/stop-using-datetime/)
+for more background on why you would want to discourage using `\DateTime`.
+
 Running tests
 -------------
 After installing dependencies (including development dependencies) using Composer, run
