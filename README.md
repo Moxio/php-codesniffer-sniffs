@@ -62,6 +62,12 @@ for the situation at hand.
 instead. The former being mutable can lead to some subtle but nasty bugs. See [this post](https://blog.nikolaposa.in.rs/2019/07/01/stop-using-datetime/)
 for more background on why you would want to discourage using `\DateTime`.
 
+**MoxioSniffs.PHP.DisallowMbDetectEncoding**: Disallows usage of `mb_detect_encoding`. This function has a misleading
+name that implies it can actually detect the encoding of a string, a problem which is generally impossible. Rather
+it checks a list of encodings until it finds one that _could_ be the right one (i.e. the string is a valid byte sequence
+according to that encoding). Using `mb_check_encoding` (possibly in a loop) instead makes this much more explicit. See
+[this talk](https://www.youtube.com/watch?v=K2zS6vbBb9A) for more background information on this topic. 
+
 Running tests
 -------------
 After installing dependencies (including development dependencies) using Composer, run
