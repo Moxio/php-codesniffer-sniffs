@@ -13,7 +13,7 @@ class DisallowMbDetectEncodingSniff extends AbstractFunctionCallSniff
 
     protected function processFunctionCall(File $phpcsFile, $functionName, $functionNamePtr, $argumentPtrs)
     {
-        $error = 'Using mb_detect_encoding() is now allowed; use mb_check_encoding() instead';
+        $error = 'Using mb_detect_encoding() is not allowed; use mb_check_encoding() instead';
         $phpcsFile->addError($error, $functionNamePtr, 'Disallowed');
     }
 }
