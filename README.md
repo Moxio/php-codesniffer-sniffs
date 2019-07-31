@@ -68,6 +68,11 @@ it checks a list of encodings until it finds one that _could_ be the right one (
 according to that encoding). Using `mb_check_encoding` (possibly in a loop) instead makes this much more explicit. See
 [this talk](https://www.youtube.com/watch?v=K2zS6vbBb9A) for more background information on this topic. 
 
+**MoxioSniffs.PHP.DisallowUtf8EncodeDecode**: Disallows calls to `utf8_encode()` and `utf8_decode()`. These functions 
+can be considered misleading because they only convert to/from ISO-8859-1, and do not 'magically' detect the 
+source/target encoding. Using `iconv()` or `mb_convert_encoding()` instead makes both character encodings that play a 
+role in the conversion explicit.
+
 Running tests
 -------------
 After installing dependencies (including development dependencies) using Composer, run
