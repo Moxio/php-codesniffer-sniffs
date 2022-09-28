@@ -6,7 +6,7 @@ use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
 
 class DisallowUtf8EncodeDecodeSniffTest extends AbstractSniffTest
 {
-    protected function getSniffClass()
+    protected function getSniffClass(): string
     {
         return DisallowUtf8EncodeDecodeSniff::class;
     }

@@ -8,7 +8,7 @@ class DisallowUniqidWithoutMoreEntropySniff extends AbstractFunctionCallSniff
 {
     protected function registerFunctions()
     {
-        return array('uniqid');
+        return ['uniqid'];
     }
 
     protected function processFunctionCall(File $phpcsFile, $functionName, $functionNamePtr, $argumentPtrs)

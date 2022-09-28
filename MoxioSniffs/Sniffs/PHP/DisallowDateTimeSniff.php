@@ -9,20 +9,20 @@ use SlevomatCodingStandard\Helpers\ReferencedNameHelper;
 
 class DisallowDateTimeSniff implements Sniff
 {
-    public $supportedTokenizers = array(
+    public $supportedTokenizers = [
         'PHP',
-    );
+    ];
 
     public function register()
     {
-        return array(T_NEW, T_DOUBLE_COLON);
+        return [T_NEW, T_DOUBLE_COLON];
     }
 
     public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
         if ($tokens[$stackPtr]['code'] === T_NEW) {
-            $nameStartPtr = $phpcsFile->findNext(array(T_STRING, T_NS_SEPARATOR), $stackPtr + 1);
+            $nameStartPtr = $phpcsFile->findNext([T_STRING, T_NS_SEPARATOR], $stackPtr + 1);
             $nameEndPtr = ReferencedNameHelper::getReferencedNameEndPointer($phpcsFile, $nameStartPtr);
             $variantCode = 'New';
         } elseif ($tokens[$stackPtr]['code'] === T_DOUBLE_COLON) {
@@ -30,11 +30,11 @@ class DisallowDateTimeSniff implements Sniff
                 array(T_STRING, T_NS_SEPARATOR),
                 Tokens::$emptyTokens
             ), $stackPtr - 1, null, true);
-            $nameStartPtr = $phpcsFile->findNext(array(T_STRING, T_NS_SEPARATOR), $beforeNameStartPtr + 1);
+            $nameStartPtr = $phpcsFile->findNext([T_STRING, T_NS_SEPARATOR], $beforeNameStartPtr + 1);
             $nameEndPtr = ReferencedNameHelper::getReferencedNameEndPointer($phpcsFile, $nameStartPtr);
             $variantCode = 'StaticMethod';
 
-            $memberNamePtr = $phpcsFile->findNext(array(T_STRING), $stackPtr + 1);
+            $memberNamePtr = $phpcsFile->findNext([T_STRING], $stackPtr + 1);
             if ($tokens[$memberNamePtr]['content'] === 'class') {
                 // Ignore references to 'harmless' ::class pseudo-constant
                 return;

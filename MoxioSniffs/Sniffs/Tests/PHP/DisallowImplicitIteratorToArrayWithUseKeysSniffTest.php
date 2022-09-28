@@ -6,7 +6,7 @@ use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
 
 class DisallowImplicitIteratorToArrayWithUseKeysSniffTest extends AbstractSniffTest
 {
-    protected function getSniffClass()
+    protected function getSniffClass(): string
     {
         return DisallowImplicitIteratorToArrayWithUseKeysSniff::class;
     }

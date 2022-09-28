@@ -7,13 +7,13 @@ use PHP_Codesniffer\Util\Tokens;
 
 class DisallowBareContinueInSwitchSniff implements Sniff
 {
-    public $supportedTokenizers = array(
+    public $supportedTokenizers = [
         'PHP',
-    );
+    ];
 
     public function register()
     {
-        return array(T_SWITCH);
+        return [T_SWITCH];
     }
 
     public function process(File $phpcsFile, $stackPtr)
@@ -30,7 +30,7 @@ class DisallowBareContinueInSwitchSniff implements Sniff
         $switchPtr = $stackPtr;
         $switchClosePtr = $tokens[$switchPtr]['scope_closer'];
 
-        $relevantTokens = array(T_CONTINUE, T_FOR, T_FOREACH, T_WHILE, T_DO);
+        $relevantTokens = [T_CONTINUE, T_FOR, T_FOREACH, T_WHILE, T_DO];
         $nextRelevantToken = $phpcsFile->findNext($relevantTokens, ($switchPtr + 1), $switchClosePtr);
         while ($nextRelevantToken !== false) {
             if ($tokens[$nextRelevantToken]['code'] === T_CONTINUE) {

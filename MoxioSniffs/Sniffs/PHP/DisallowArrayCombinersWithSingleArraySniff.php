@@ -8,7 +8,7 @@ class DisallowArrayCombinersWithSingleArraySniff extends AbstractFunctionCallSni
 {
     protected $skipForUnpackedArguments = true;
 
-    private $arrayCombinationFunctions = array(
+    private $arrayCombinationFunctions = [
         'array_merge' => 2,
         'array_merge_recursive' => 2,
         'array_replace' => 2,
@@ -29,7 +29,7 @@ class DisallowArrayCombinersWithSingleArraySniff extends AbstractFunctionCallSni
         'array_uintersect' => 3,
         'array_uintersect_assoc' => 3,
         'array_uintersect_uassoc' => 4,
-    );
+    ];
 
     protected function registerFunctions()
     {

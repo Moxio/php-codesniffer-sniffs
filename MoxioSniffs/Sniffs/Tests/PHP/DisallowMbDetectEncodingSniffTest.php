@@ -6,7 +6,7 @@ use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
 
 class DisallowMbDetectEncodingSniffTest extends AbstractSniffTest
 {
-    protected function getSniffClass()
+    protected function getSniffClass(): string
     {
         return DisallowMbDetectEncodingSniff::class;
     }

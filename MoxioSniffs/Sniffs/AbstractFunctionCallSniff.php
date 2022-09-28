@@ -1,4 +1,5 @@
 <?php
+
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs;
 
 use PHP_CodeSniffer\Sniffs\Sniff;
@@ -7,15 +8,13 @@ use PHP_Codesniffer\Util\Tokens;
 
 abstract class AbstractFunctionCallSniff implements Sniff
 {
-    public $supportedTokenizers = array(
-        'PHP',
-    );
+    public $supportedTokenizers = ['PHP'];
 
     protected $skipForUnpackedArguments = false;
 
-    public function register()
+    public function register(): array
     {
-        return array(T_STRING);
+        return [T_STRING];
     }
 
     public function process(File $phpcsFile, $stackPtr)
@@ -57,11 +56,11 @@ abstract class AbstractFunctionCallSniff implements Sniff
 
         $closeBracket = $tokens[$openBracket]['parenthesis_closer'];
 
-        $argumentPositions = array();
+        $argumentPositions = [];
         $hasUnpackedArgument = false;
         $lastArgumentSeparator = $openBracket;
         $nextSeparator = $openBracket;
-        while (($nextSeparator = $phpcsFile->findNext(array(T_COMMA, T_OPEN_SHORT_ARRAY), ($nextSeparator + 1), $closeBracket)) !== false) {
+        while (($nextSeparator = $phpcsFile->findNext([T_COMMA, T_OPEN_SHORT_ARRAY], ($nextSeparator + 1), $closeBracket)) !== false) {
             // Skip over pairs of square brackets
             if ($tokens[$nextSeparator]['code'] === T_OPEN_SHORT_ARRAY) {
                 $nextSeparator = $tokens[$nextSeparator]['bracket_closer'];
@@ -79,10 +78,10 @@ abstract class AbstractFunctionCallSniff implements Sniff
             $argumentStart = $phpcsFile->findNext(Tokens::$emptyTokens, $lastArgumentSeparator + 1, $nextSeparator, true);
             if ($argumentStart !== false) {
                 $argumentEnd = $phpcsFile->findPrevious(Tokens::$emptyTokens, $nextSeparator - 1, $lastArgumentSeparator, true);
-                $argumentPositions[] = array(
+                $argumentPositions[] = [
                     "start" => $argumentStart,
                     "end" => $argumentEnd
-                );
+                ];
             }
 
             $lastArgumentSeparator = $nextSeparator;
@@ -102,10 +101,10 @@ abstract class AbstractFunctionCallSniff implements Sniff
                 }
             }
 
-            $argumentPositions[] = array(
+            $argumentPositions[] = [
                 "start" => $argumentStart,
                 "end" => $argumentEnd
-            );
+            ];
         }
 
         if ($this->skipForUnpackedArguments && $hasUnpackedArgument) {

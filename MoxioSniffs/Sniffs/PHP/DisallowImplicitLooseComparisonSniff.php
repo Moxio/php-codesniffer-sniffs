@@ -6,15 +6,15 @@ use PHP_CodeSniffer\Files\File;
 
 class DisallowImplicitLooseComparisonSniff extends AbstractFunctionCallSniff
 {
-    private $functionsWithStrictParameter = array(
+    private $functionsWithStrictParameter = [
         'in_array' => 3,
         'array_search' => 3,
         'array_keys' => 3,
-    );
+    ];
 
-    private $minimumArgumentsForApplicability = array(
+    private $minimumArgumentsForApplicability = [
         'array_keys' => 2,
-    );
+    ];
 
     protected function registerFunctions()
     {
