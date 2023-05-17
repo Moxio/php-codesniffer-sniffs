@@ -4,6 +4,8 @@ namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
 use PHP_Codesniffer\Util\Tokens;
+use SlevomatCodingStandard\Helpers\NamespaceHelper;
+use SlevomatCodingStandard\Helpers\ReferencedNameHelper;
 
 abstract class AbstractFunctionCallSniff implements Sniff
 {
@@ -24,12 +26,6 @@ abstract class AbstractFunctionCallSniff implements Sniff
         $functionNamePtr    = $stackPtr;
         $functionName = $tokens[$functionNamePtr]['content'];
 
-        $registeredFunctions = $this->registerFunctions();
-        if (in_array($functionName, $registeredFunctions, true) !== true) {
-            // We're not interested in calls to *this* function
-            return;
-        }
-
         // If the next non-whitespace token after the function or method call
         // is not an opening parenthesis then it cant really be a *call*.
         $openBracket = $phpcsFile->findNext(Tokens::$emptyTokens, ($functionNamePtr + 1), null, true);
@@ -37,11 +33,34 @@ abstract class AbstractFunctionCallSniff implements Sniff
             return;
         }
 
-        // Skip tokens that are *method* calls rather than *function* calls
+        // Skip tokens that are instance *method* calls rather than static calls
         $callOperator = $phpcsFile->findPrevious(Tokens::$emptyTokens, ($functionNamePtr - 1), null, true);
-        if ($tokens[$callOperator]['code'] === T_OBJECT_OPERATOR || $tokens[$callOperator]['code'] === T_DOUBLE_COLON) {
+        if ($tokens[$callOperator]['code'] === T_OBJECT_OPERATOR) {
             return;
         }
+
+		// If this is a static method call, prefix function name with class
+		if ($tokens[$callOperator]['code'] === T_DOUBLE_COLON) {
+			$beforeNameStartPtr = $phpcsFile->findPrevious(array_merge(
+				array(T_STRING, T_NS_SEPARATOR),
+				Tokens::$emptyTokens
+			), $callOperator - 1, null, true);
+			// Skip static method calls invoked in non-static way (not directly on static class name)
+			if ($beforeNameStartPtr === false) {
+				return;
+			}
+			$nameStartPtr = $phpcsFile->findNext(array(T_STRING, T_NS_SEPARATOR), $beforeNameStartPtr + 1);
+			$nameEndPtr = ReferencedNameHelper::getReferencedNameEndPointer($phpcsFile, $nameStartPtr);
+			$name = ReferencedNameHelper::getReferenceName($phpcsFile, $nameStartPtr, $nameEndPtr);
+			$fqName = NamespaceHelper::resolveClassName($phpcsFile, $name, $nameStartPtr);
+			$functionName = $fqName . '::' . $functionName;
+		}
+
+		$registeredFunctions = $this->registerFunctions();
+		if (in_array($functionName, $registeredFunctions, true) !== true) {
+			// We're not interested in calls to *this* function
+			return;
+		}
 
         // Skip tokens that are the names of functions or classes
         // within their definitions. For example:
