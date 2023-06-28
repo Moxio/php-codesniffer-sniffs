@@ -4,7 +4,7 @@ namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP;
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\AbstractFunctionCallSniff;
 use PHP_CodeSniffer\Files\File;
 
-class DisallowDateCreateFromFormatWithUnspecifiedTimeComponent extends AbstractFunctionCallSniff
+class DisallowDateCreateFromFormatWithUnspecifiedTimeComponentSniff extends AbstractFunctionCallSniff
 {
 	private const TIME_COMPONENTS = 'ghGHisvu';
 
