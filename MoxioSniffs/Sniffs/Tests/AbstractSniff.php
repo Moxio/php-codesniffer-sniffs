@@ -4,10 +4,11 @@ namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests;
 use PHP_CodeSniffer\Config;
 use PHP_CodeSniffer\Files\LocalFile;
 use PHP_CodeSniffer\Runner;
+use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../../../vendor/squizlabs/php_codesniffer/autoload.php';
 
-abstract class AbstractSniffTest extends \PHPUnit\Framework\TestCase
+abstract class AbstractSniff extends TestCase
 {
     abstract protected function getSniffClass();
 

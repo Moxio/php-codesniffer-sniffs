@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowImplicitMicrotimeAsStringSniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniff;
 
-class DisallowImplicitMicrotimeAsStringSniffTest extends AbstractSniffTest
+class DisallowImplicitMicrotimeAsStringSniffTest extends AbstractSniff
 {
     protected function getSniffClass()
     {

@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowUtf8EncodeDecodeSniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniff;
 
-class DisallowUtf8EncodeDecodeSniffTest extends AbstractSniffTest
+class DisallowUtf8EncodeDecodeSniffTest extends AbstractSniff
 {
     protected function getSniffClass()
     {
