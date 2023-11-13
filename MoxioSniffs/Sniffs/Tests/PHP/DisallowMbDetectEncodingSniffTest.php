@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowMbDetectEncodingSniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniff;
 
-class DisallowMbDetectEncodingSniffTest extends AbstractSniffTest
+class DisallowMbDetectEncodingSniffTest extends AbstractSniff
 {
     protected function getSniffClass()
     {

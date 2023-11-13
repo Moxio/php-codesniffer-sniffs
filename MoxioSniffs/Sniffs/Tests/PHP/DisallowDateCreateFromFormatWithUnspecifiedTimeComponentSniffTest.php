@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowDateCreateFromFormatWithUnspecifiedTimeComponentSniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniff;
 
-class DisallowDateCreateFromFormatWithUnspecifiedTimeComponentSniffTest extends AbstractSniffTest {
+class DisallowDateCreateFromFormatWithUnspecifiedTimeComponentSniffTest extends AbstractSniff {
 	protected function getSniffClass()
 	{
 		return DisallowDateCreateFromFormatWithUnspecifiedTimeComponentSniff::class;

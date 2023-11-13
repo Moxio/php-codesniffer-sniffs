@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowArrayCombinersWithSingleArraySniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniff;
 
-class DisallowArrayCombinersWithSingleArraySniffTest extends AbstractSniffTest
+class DisallowArrayCombinersWithSingleArraySniffTest extends AbstractSniff
 {
     protected function getSniffClass()
     {

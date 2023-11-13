@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowImplicitLooseComparisonSniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniff;
 
-class DisallowImplicitLooseComparisonSniffTest extends AbstractSniffTest
+class DisallowImplicitLooseComparisonSniffTest extends AbstractSniff
 {
     protected function getSniffClass()
     {

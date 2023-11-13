@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowImplicitIteratorToArrayWithUseKeysSniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniff;
 
-class DisallowImplicitIteratorToArrayWithUseKeysSniffTest extends AbstractSniffTest
+class DisallowImplicitIteratorToArrayWithUseKeysSniffTest extends AbstractSniff
 {
     protected function getSniffClass()
     {
