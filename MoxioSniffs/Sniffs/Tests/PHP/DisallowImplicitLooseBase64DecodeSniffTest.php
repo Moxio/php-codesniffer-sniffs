@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowImplicitLooseBase64DecodeSniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTestCase;
 
-class DisallowImplicitLooseBase64DecodeSniffTest extends AbstractSniffTest
+class DisallowImplicitLooseBase64DecodeSniffTest extends AbstractSniffTestCase
 {
     protected function getSniffClass()
     {

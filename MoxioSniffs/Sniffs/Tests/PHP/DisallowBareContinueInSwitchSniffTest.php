@@ -2,9 +2,9 @@
 namespace Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\PHP;
 
 use Moxio\CodeSniffer\MoxioSniffs\Sniffs\PHP\DisallowBareContinueInSwitchSniff;
-use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTest;
+use Moxio\CodeSniffer\MoxioSniffs\Sniffs\Tests\AbstractSniffTestCase;
 
-class DisallowBareContinueInSwitchSniffTest extends AbstractSniffTest
+class DisallowBareContinueInSwitchSniffTest extends AbstractSniffTestCase
 {
     protected function getSniffClass()
     {

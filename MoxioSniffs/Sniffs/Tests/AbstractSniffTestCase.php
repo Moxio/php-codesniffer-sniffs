@@ -7,7 +7,7 @@ use PHP_CodeSniffer\Runner;
 
 require_once __DIR__ . '/../../../vendor/squizlabs/php_codesniffer/autoload.php';
 
-abstract class AbstractSniffTest extends \PHPUnit\Framework\TestCase
+abstract class AbstractSniffTestCase extends \PHPUnit\Framework\TestCase
 {
     abstract protected function getSniffClass();
 
